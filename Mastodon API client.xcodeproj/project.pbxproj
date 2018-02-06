@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2EC1E52D4E7B6F30A7BC51EF /* Pods_Mastodon_API_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7329E97DDF6AD3B12963F0D6 /* Pods_Mastodon_API_client.framework */; };
+		831CECF6202A6256006B2DF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CECF5202A6256006B2DF3 /* AppDelegate.swift */; };
+		831CECFB202A6256006B2DF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831CECF9202A6256006B2DF3 /* Main.storyboard */; };
+		831CECFD202A6256006B2DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831CECFC202A6256006B2DF3 /* Assets.xcassets */; };
+		831CED0B202A62C2006B2DF3 /* JSONResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED0A202A62C2006B2DF3 /* JSONResponseParser.swift */; };
+		831CED0E202A6B10006B2DF3 /* TimeLineFeedTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED0D202A6B10006B2DF3 /* TimeLineFeedTableVC.swift */; };
+		831CED10202A70F1006B2DF3 /* TimeLineElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED0F202A70F1006B2DF3 /* TimeLineElement.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		25644AAAC3B906152FF40952 /* Pods-Mastodon API client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mastodon API client.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mastodon API client/Pods-Mastodon API client.release.xcconfig"; sourceTree = "<group>"; };
+		69F162CDD84354A5B2E83D4E /* Pods-Mastodon API client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mastodon API client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mastodon API client/Pods-Mastodon API client.debug.xcconfig"; sourceTree = "<group>"; };
+		7329E97DDF6AD3B12963F0D6 /* Pods_Mastodon_API_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mastodon_API_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		831CECF2202A6256006B2DF3 /* Mastodon API client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mastodon API client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		831CECF5202A6256006B2DF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		831CECFA202A6256006B2DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		831CECFC202A6256006B2DF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		831CED01202A6256006B2DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		831CED0A202A62C2006B2DF3 /* JSONResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponseParser.swift; sourceTree = "<group>"; };
+		831CED0D202A6B10006B2DF3 /* TimeLineFeedTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeLineFeedTableVC.swift; path = "Mastodon API client/Controllers/TimeLineFeedTableVC.swift"; sourceTree = SOURCE_ROOT; };
+		831CED0F202A70F1006B2DF3 /* TimeLineElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineElement.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		831CECEF202A6256006B2DF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EC1E52D4E7B6F30A7BC51EF /* Pods_Mastodon_API_client.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		831CECE9202A6256006B2DF3 = {
+			isa = PBXGroup;
+			children = (
+				831CECF4202A6256006B2DF3 /* Mastodon API client */,
+				831CECF3202A6256006B2DF3 /* Products */,
+				E47C60F62679BF8701EBFCDC /* Pods */,
+				AEDD87E91881FE49FC012B40 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		831CECF3202A6256006B2DF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				831CECF2202A6256006B2DF3 /* Mastodon API client.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		831CECF4202A6256006B2DF3 /* Mastodon API client */ = {
+			isa = PBXGroup;
+			children = (
+				831CED07202A6267006B2DF3 /* Model */,
+				831CED08202A6275006B2DF3 /* View */,
+				831CED09202A627E006B2DF3 /* Controllers */,
+				831CED0C202A63C1006B2DF3 /* Helpers */,
+			);
+			path = "Mastodon API client";
+			sourceTree = "<group>";
+		};
+		831CED07202A6267006B2DF3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				831CED0F202A70F1006B2DF3 /* TimeLineElement.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		831CED08202A6275006B2DF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				831CECF9202A6256006B2DF3 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		831CED09202A627E006B2DF3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				831CED0D202A6B10006B2DF3 /* TimeLineFeedTableVC.swift */,
+				831CED0A202A62C2006B2DF3 /* JSONResponseParser.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		831CED0C202A63C1006B2DF3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				831CECF5202A6256006B2DF3 /* AppDelegate.swift */,
+				831CECFC202A6256006B2DF3 /* Assets.xcassets */,
+				831CED01202A6256006B2DF3 /* Info.plist */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AEDD87E91881FE49FC012B40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7329E97DDF6AD3B12963F0D6 /* Pods_Mastodon_API_client.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E47C60F62679BF8701EBFCDC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69F162CDD84354A5B2E83D4E /* Pods-Mastodon API client.debug.xcconfig */,
+				25644AAAC3B906152FF40952 /* Pods-Mastodon API client.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		831CECF1202A6256006B2DF3 /* Mastodon API client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 831CED04202A6256006B2DF3 /* Build configuration list for PBXNativeTarget "Mastodon API client" */;
+			buildPhases = (
+				96F2EB6AF559861EB844CB4C /* [CP] Check Pods Manifest.lock */,
+				831CECEE202A6256006B2DF3 /* Sources */,
+				831CECEF202A6256006B2DF3 /* Frameworks */,
+				831CECF0202A6256006B2DF3 /* Resources */,
+				609BA63C700CD80677EFDEAB /* [CP] Embed Pods Frameworks */,
+				29B054D3586AC949FE4E13C8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mastodon API client";
+			productName = "Mastodon API client";
+			productReference = 831CECF2202A6256006B2DF3 /* Mastodon API client.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		831CECEA202A6256006B2DF3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "@Danil";
+				TargetAttributes = {
+					831CECF1202A6256006B2DF3 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 831CECED202A6256006B2DF3 /* Build configuration list for PBXProject "Mastodon API client" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 831CECE9202A6256006B2DF3;
+			productRefGroup = 831CECF3202A6256006B2DF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				831CECF1202A6256006B2DF3 /* Mastodon API client */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		831CECF0202A6256006B2DF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				831CECFD202A6256006B2DF3 /* Assets.xcassets in Resources */,
+				831CECFB202A6256006B2DF3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29B054D3586AC949FE4E13C8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mastodon API client/Pods-Mastodon API client-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		609BA63C700CD80677EFDEAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mastodon API client/Pods-Mastodon API client-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mastodon API client/Pods-Mastodon API client-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96F2EB6AF559861EB844CB4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mastodon API client-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		831CECEE202A6256006B2DF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				831CED0B202A62C2006B2DF3 /* JSONResponseParser.swift in Sources */,
+				831CED10202A70F1006B2DF3 /* TimeLineElement.swift in Sources */,
+				831CED0E202A6B10006B2DF3 /* TimeLineFeedTableVC.swift in Sources */,
+				831CECF6202A6256006B2DF3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		831CECF9202A6256006B2DF3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831CECFA202A6256006B2DF3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		831CED02202A6256006B2DF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		831CED03202A6256006B2DF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		831CED05202A6256006B2DF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69F162CDD84354A5B2E83D4E /* Pods-Mastodon API client.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NT3Q29257K;
+				INFOPLIST_FILE = "Mastodon API client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "danil.Mastodon-API-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		831CED06202A6256006B2DF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25644AAAC3B906152FF40952 /* Pods-Mastodon API client.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NT3Q29257K;
+				INFOPLIST_FILE = "Mastodon API client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "danil.Mastodon-API-client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		831CECED202A6256006B2DF3 /* Build configuration list for PBXProject "Mastodon API client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				831CED02202A6256006B2DF3 /* Debug */,
+				831CED03202A6256006B2DF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		831CED04202A6256006B2DF3 /* Build configuration list for PBXNativeTarget "Mastodon API client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				831CED05202A6256006B2DF3 /* Debug */,
+				831CED06202A6256006B2DF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 831CECEA202A6256006B2DF3 /* Project object */;
+}

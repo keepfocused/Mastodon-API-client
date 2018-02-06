@@ -1,0 +1,6 @@
+framework module Pods_Mastodon_API_client {
+  umbrella header "Pods-Mastodon API client-umbrella.h"
+
+  export *
+  module * { export * }
+}
