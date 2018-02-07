@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class TimeLineFeedTableVC: UITableViewController {
     
-    private var timeLineElements = [TimeLineElement]()
+    private var timeLineElements = [TimeLinePost]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +24,11 @@ class TimeLineFeedTableVC: UITableViewController {
         
         Alamofire.request("https://mastodon.technology/api/v1/timelines/public").responseJSON(){(data) in
             
-            
             let json:Data? = data.data
-            
-            // print(data)
             
             let parser = JSONResponseParser()
             
-            self.timeLineElements = parser.performTimeLineParse(rawData: json)
+            self.timeLineElements = parser.performTimeLineDataParse(inputData: json)
             
             self.tableView.reloadData()
             
