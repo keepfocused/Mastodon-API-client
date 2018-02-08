@@ -7,5 +7,6 @@ target 'Mastodon API client' do
 
   # Pods for Mastodon API client
 pod 'Alamofire', '~> 4.6'
+pod 'AlamofireImage', '~> 3.3'
 
 end

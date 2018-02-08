@@ -7,19 +7,14 @@
 //
 
 import Foundation
-
-//  Приходит в реквесте массив статусов
-
-//struct Statuses: Codable {
-//    let statuses: [TimeLinePost]
-//}
-
+import UIKit
+import Alamofire
 
 struct TimeLinePost: Codable {
     let account: Account
-    let createdAt: Date // Date fix
-    let postURL: Bool // enum accord
-    let textOfPost: String //enum accord
+    let createdAt: Date?
+    let postURL: String
+    let textOfPost: String
     let reblogsCount: Int
     let attachments: [Attachments]?
     
@@ -30,9 +25,7 @@ struct TimeLinePost: Codable {
         case textOfPost = "content"
         case reblogsCount = "reblogs_count"
         case attachments = "media_attachments"
-        
     }
-    
 }
 
 struct Account: Codable {
@@ -47,20 +40,25 @@ struct Account: Codable {
     }
 }
 
-//media_attachments
+
 struct Attachments: Codable {
     let id: String
-    let type: String //One of: "image", "video", "gifv", "unknown"
+    let type: String
     let url: String
     let previewURL: String
-    let meta: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case type
         case url
         case previewURL = "preview_url"
-        case meta
     }
 }
+
+struct Images {
+    let avatarImage:UIImage
+    let postImage:UIImage
+}
+
+
 

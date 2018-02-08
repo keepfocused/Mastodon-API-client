@@ -8,65 +8,44 @@
 
 import Foundation
 
+extension Formatter {
+    static let iso8601: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter
+    }()
+    static let iso8601noFS = ISO8601DateFormatter()
+}
+
+extension JSONDecoder.DateDecodingStrategy {
+    static let customISO8601 = custom { decoder throws -> Date in
+        let container = try decoder.singleValueContainer()
+        let string = try container.decode(String.self)
+        if let date = Formatter.iso8601.date(from: string) ?? Formatter.iso8601noFS.date(from: string) {
+            return date
+        }
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date: \(string)")
+    }
+}
+
 class JSONResponseParser {
     
     public func performTimeLineDataParse (inputData:Data?) -> [TimeLinePost] {
         
         var parsedTimeLinePosts = [TimeLinePost]()
         
-        
-        let decoder = JSONDecoder()
-        
-        let statuses = try? decoder.decode(TimeLinePost.self, from: inputData!)
-        
-        dump(statuses?.account)
-        
-        print(statuses)
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        /*
-        let json = try? JSONSerialization.jsonObject(with: inputData!) as? Array<Any>
-        
-        print(json!?.first)
-        
-        print("Array")
-        print(json!?.first as? Array<Any>)
-        
-        print("Dictionary")
-        let dict = json!?.first as? Dictionary<String,Any>
-        print(dict)
-        
-        print("All keys")
-        
-        for key in (dict?.keys)! {
-            print(key)
+        do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .customISO8601
+            let statuses = try! decoder.decode([TimeLinePost].self, from: inputData!)
+            
+            parsedTimeLinePosts = statuses
         }
-        */
-        
-        
-        
-        
-        
-        /*
-        for element in json
-        {
-            print(element as? Dictionary<String,Any>)
+        catch {
+            print("timeLine parse failed: \(error)")
         }
         
-        */
-        
-        
-        
-      return parsedTimeLinePosts
+        return parsedTimeLinePosts
     }
 }
 
