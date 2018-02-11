@@ -19,68 +19,78 @@ class TimeLineFeedTableVC: UITableViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
-        print("view did load started")
+
+        let networkManager = NetworkManager()
         
-        /*
-        Alamofire.request("https://mastodon.technology/api/v1/timelines/public").responseJSON(){(data) in
-            
-            let json:Data? = data.data
-            
-            let parser = JSONResponseParser()
-            
-            self.timeLineElements = parser.performTimeLineDataParse(inputData: json)
-            
-            self.tableView.reloadData()
-            
-            print("view did load finished")
-        }
- */
-        
-        
-        passDataForParse() { data in
+        networkManager.passDataForParse() { data in
             
             let parser = JSONResponseParser()
             
             self.timeLineElements = parser.performTimeLineDataParse(inputData: data)
             
             self.tableView.reloadData()
+            
         }
+        
+       // networkManager.pass
+        
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.timeLineElements.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 2
+        
+        return  self.timeLineElements.count
+        
+   
+      
     }
 
     private let timeLineCellIdentifier = "timeLineCellIdentifier"
-    private let timeLinePostImageCellIdentifier = "timeLinePostImageCell"
+   // private let timeLinePostImageCellIdentifier = "timeLinePostImageCell"
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 0) {
+        if (indexPath.section == 0) {
             let celll = tableView.dequeueReusableCell(withIdentifier: timeLineCellIdentifier, for: indexPath) as! TimeLineCell
             
-            celll.cellData = self.timeLineElements[indexPath.section]
+            celll.cellData = self.timeLineElements[indexPath.row]
+            
+            
+            
+            
+            let data = self.timeLineElements[indexPath.row]
+            
+            
+            
+            let avatarURL = data.account.avatarURL
+            celll.avatarImageView.image = nil
+            celll.cellNumber = indexPath.row
+            print("cell for row method indexpath = \(indexPath.row)")
+            
+            NetworkManager.sharedInstance.getImageByURL(imageURL: avatarURL, completion: { (avatarImage) in
+                
+                DispatchQueue.main.async {
+                    celll.avatarImageView.image = avatarImage
+                }
+            })
+
+            
+            
+            
+            
             
             return celll
             
         }
         
-        if (indexPath.row == 1) {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: timeLinePostImageCellIdentifier, for: indexPath) as! TimeLinePostImageCell
-            
-            
-            return cell
-            
-        }
+
         
         let cell = tableView.dequeueReusableCell(withIdentifier:"reuseIdentifier", for: indexPath)
         
@@ -88,32 +98,30 @@ class TimeLineFeedTableVC: UITableViewController {
 
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            cell.alpha = 1.0
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if (indexPath.row == 0) {
-            return 336
-        }
-        if (indexPath.row == 1) {
-            
-            if (self.timeLineElements[indexPath.section].attachments?.count != 0) {
-                return 336
-            }
-        }
-        return 40
-    }
-    
-    
-    func passDataForParse (completion: @escaping (Data?) -> Void)  {
-        
-        Alamofire.request("https://mastodon.technology/api/v1/timelines/public").responseJSON(){(data) in
-            
-            let json:Data? = data.data
-            
-            
-            completion (json)
-    }
 
-}
+        if (self.timeLineElements[indexPath.row].attachments?.count != 0) {
+            return 165 + 165
+        } else {
+            return 165
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
 }
  
 

@@ -32,13 +32,13 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wXd-D2-ZPs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.22076523300000001" green="0.28270453210000002" blue="0.46065592770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeLineCellIdentifier" rowHeight="229" id="AGW-SP-386" customClass="TimeLineCell" customModule="Mastodon_API_client" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="229"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeLineCellIdentifier" rowHeight="315" id="AGW-SP-386" customClass="TimeLineCell" customModule="Mastodon_API_client" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="315"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AGW-SP-386" id="gGI-d5-DKd" customClass="TimeLineCell" customModule="Mastodon_API_client" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="228.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="314.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4zV-Om-OBF">
@@ -52,13 +52,6 @@
                                             <color key="textColor" red="0.9839679523" green="0.98268211549999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLM-Fn-9le">
-                                            <rect key="frame" x="303" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.39505858113852077" green="0.50887488458478769" blue="0.87345336294416231" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qvb-bn-DJL">
                                             <rect key="frame" x="110" y="36" width="172" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,38 +60,34 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRE-DQ-1SE">
-                                            <rect key="frame" x="110" y="96" width="235" height="91"/>
+                                            <rect key="frame" x="110" y="96" width="235" height="71"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <color key="textColor" red="0.9839679523" green="0.98268211549999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.22066546119582953" green="0.28164959367585091" blue="0.4590934327411168" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="avatarImageView" destination="4zV-Om-OBF" id="g2C-XH-8ve"/>
-                                    <outlet property="dateLabel" destination="WLM-Fn-9le" id="i8z-0o-Rjw"/>
-                                    <outlet property="nickNameLabel" destination="ziB-Lv-7HN" id="F3f-8v-XFZ"/>
-                                    <outlet property="textOfPostLabel" destination="zRE-DQ-1SE" id="i1D-kl-ne5"/>
-                                    <outlet property="userNameLabel" destination="qvb-bn-DJL" id="K9M-sv-d24"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeLinePostImageCell" rowHeight="135" id="Fom-JY-Acr" customClass="TimeLinePostImageCell" customModule="Mastodon_API_client" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="257" width="375" height="135"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fom-JY-Acr" id="2kY-OU-osx" customClass="TimeLinePostImageCell" customModule="Mastodon_API_client" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLM-Fn-9le">
+                                            <rect key="frame" x="320" y="11" width="39" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" red="0.39505858113852077" green="0.50887488458478769" blue="0.87345336294416231" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V8t-oH-oOQ">
-                                            <rect key="frame" x="105" y="9" width="235" height="117"/>
+                                            <rect key="frame" x="110" y="181" width="235" height="117"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.22076523303985596" green="0.28270453214645386" blue="0.46065592765808105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="150" minY="0.0" maxX="100" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="postImageView" destination="V8t-oH-oOQ" id="fX2-2g-uGD"/>
+                                    <outlet property="avatarImageView" destination="4zV-Om-OBF" id="g2C-XH-8ve"/>
+                                    <outlet property="dateLabel" destination="WLM-Fn-9le" id="i8z-0o-Rjw"/>
+                                    <outlet property="nickNameLabel" destination="ziB-Lv-7HN" id="F3f-8v-XFZ"/>
+                                    <outlet property="postImageView" destination="V8t-oH-oOQ" id="nz6-3G-bkR"/>
+                                    <outlet property="textOfPostLabel" destination="zRE-DQ-1SE" id="i1D-kl-ne5"/>
+                                    <outlet property="userNameLabel" destination="qvb-bn-DJL" id="K9M-sv-d24"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

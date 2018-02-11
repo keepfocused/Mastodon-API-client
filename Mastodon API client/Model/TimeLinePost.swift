@@ -44,20 +44,15 @@ struct Account: Codable {
 struct Attachments: Codable {
     let id: String
     let type: String
-    let url: String
+    let postImageURL: String
     let previewURL: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case type
-        case url
+        case postImageURL = "url"
         case previewURL = "preview_url"
     }
-}
-
-struct Images {
-    let avatarImage:UIImage
-    let postImage:UIImage
 }
 
 
