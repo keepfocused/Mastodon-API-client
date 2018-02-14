@@ -14,11 +14,10 @@ import UIKit
 class NetworkManager {
     
     //NetworkManager Singleton
-    
     static let sharedInstance = NetworkManager()
-
     
-    public func passDataForParse (completion: @escaping (Data?) -> Void)  {
+    
+    public func getTimeLineData (completion: @escaping (Data?) -> Void)  {
         
         Alamofire.request("https://mastodon.technology/api/v1/timelines/public").responseJSON(){(data) in
             

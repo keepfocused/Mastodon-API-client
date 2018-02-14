@@ -13,89 +13,93 @@ import Alamofire
 
 class TimeLineFeedTableVC: UITableViewController {
     
-    private var timeLineElements = [TimeLinePost]()
-
+    private var statuses = [Status]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        self.tableView.separatorStyle = .singleLine
+        self.tableView.separatorColor = UIColor.white
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 400
         
 
-        let networkManager = NetworkManager()
         
-        networkManager.passDataForParse() { data in
+        
+        let networkManager = NetworkManager.sharedInstance
+        
+        networkManager.getTimeLineData() { data in
             
             let parser = JSONResponseParser()
             
-            self.timeLineElements = parser.performTimeLineDataParse(inputData: data)
+            self.statuses = parser.performTimeLineDataParse(inputData: data)
             
             self.tableView.reloadData()
-            
         }
         
-       // networkManager.pass
-        
-        
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return  self.timeLineElements.count
-        
-   
-      
+        return  self.statuses.count
     }
-
+    
     private let timeLineCellIdentifier = "timeLineCellIdentifier"
-   // private let timeLinePostImageCellIdentifier = "timeLinePostImageCell"
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (indexPath.section == 0) {
-            let celll = tableView.dequeueReusableCell(withIdentifier: timeLineCellIdentifier, for: indexPath) as! TimeLineCell
+            let timeLineCell = tableView.dequeueReusableCell(withIdentifier: timeLineCellIdentifier, for: indexPath) as! TimeLineCell
             
-            celll.cellData = self.timeLineElements[indexPath.row]
+            timeLineCell.cellData = self.statuses[indexPath.row]
             
-            
-            
-            
-            let data = self.timeLineElements[indexPath.row]
-            
-            
-            
-            let avatarURL = data.account.avatarURL
-            celll.avatarImageView.image = nil
-            celll.cellNumber = indexPath.row
-            print("cell for row method indexpath = \(indexPath.row)")
+            let status = self.statuses[indexPath.row]
+        
+        
+        timeLineCell.avatarImageView.image = nil
+            let avatarURL = status.account.avatarURL
             
             NetworkManager.sharedInstance.getImageByURL(imageURL: avatarURL, completion: { (avatarImage) in
                 
                 DispatchQueue.main.async {
-                    celll.avatarImageView.image = avatarImage
+                    timeLineCell.avatarImageView.image = avatarImage
                 }
             })
-
-            
-            
-            
-            
-            
-            return celll
-            
+            timeLineCell.postImageView.image = nil
+timeLineCell.postImageView.isHidden = true
+        
+        
+            if (self.statuses[indexPath.row].attachments?.count != 0) {
+                
+                timeLineCell.postImageView.isHidden = false
+                
+                
+                let postImageURL = status.attachments!.first!.postImageURL
+                NetworkManager.sharedInstance.getImageByURL(imageURL: postImageURL, completion: { (postImage) in
+                    
+                    DispatchQueue.main.async {
+                        timeLineCell.postImageView.image = postImage
+                    }
+                })
         }
+                
+                
+                
         
+            
+            
+
+            timeLineCell.selectionStyle = .none
+            
+            
+            return timeLineCell
 
         
-        let cell = tableView.dequeueReusableCell(withIdentifier:"reuseIdentifier", for: indexPath)
-        
-        return cell
-
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -107,23 +111,19 @@ class TimeLineFeedTableVC: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        if (self.timeLineElements[indexPath.row].attachments?.count != 0) {
-            return 165 + 165
-        } else {
-            return 165
-        }
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     
     
     
 }
- 
 
 
 
@@ -131,13 +131,5 @@ class TimeLineFeedTableVC: UITableViewController {
 
 
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 

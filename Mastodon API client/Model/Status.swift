@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 
-struct TimeLinePost: Codable {
+struct Status: Codable {
     let account: Account
     let createdAt: Date?
     let postURL: String

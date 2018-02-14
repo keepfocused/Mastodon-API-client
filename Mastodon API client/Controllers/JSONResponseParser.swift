@@ -27,25 +27,27 @@ extension JSONDecoder.DateDecodingStrategy {
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date: \(string)")
     }
 }
+ 
+
 
 class JSONResponseParser {
     
-    public func performTimeLineDataParse (inputData:Data?) -> [TimeLinePost] {
+    public func performTimeLineDataParse (inputData:Data?) -> [Status] {
         
-        var parsedTimeLinePosts = [TimeLinePost]()
+        var parsedTimeLineStatuses = [Status]()
         
         do {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .customISO8601
-            let statuses = try! decoder.decode([TimeLinePost].self, from: inputData!)
+            let statuses = try! decoder.decode([Status].self, from: inputData!)
             
-            parsedTimeLinePosts = statuses
+            parsedTimeLineStatuses = statuses
         }
         catch {
             print("timeLine parse failed: \(error)")
         }
         
-        return parsedTimeLinePosts
+        return parsedTimeLineStatuses
     }
 }
 
