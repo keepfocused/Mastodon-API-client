@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import AlamofireImage
 
 
 
@@ -15,8 +15,10 @@ class TimeLineFeedTableVC: UITableViewController {
     
     private var statuses = [Status]()
     
-    private var cachePostImages = [String: UIImage]()
-    private var cacheAvatarImages = [String: UIImage]()
+    private let imageCache = AutoPurgingImageCache(
+        memoryCapacity: 100_000_000,
+        preferredMemoryUsageAfterPurge: 60_000_000
+    )
     
     
     
@@ -68,80 +70,7 @@ class TimeLineFeedTableVC: UITableViewController {
         configureCell(cell: timeLineCell, forPath: indexPath)
         
         return timeLineCell
-            
-           // timeLineCell.cellData = self.statuses[indexPath.row]
-            
-           // let status = self.statuses[indexPath.row]
-        
-       // timeLineCell.textOfPostLabel.text = status.textOfPost
-        
-        
-        
-        
-        
-        
-        
-       // timeLineCell.avatarImageView.image = nil
-        
-        /*
-            let avatarURL = status.account.avatarURL
-            
-            NetworkManager.sharedInstance.getImageByURL(imageURL: avatarURL, completion: { (avatarImage) in
-                
-                DispatchQueue.main.async {
-                    timeLineCell.avatarImageView.image = avatarImage
-                }
-            })
-        */
-        
-        
-timeLineCell.postImageView.image = nil
-        
-        /*
-            if (self.statuses[indexPath.row].attachments?.count != 0) {
-                
-            
-                
-            //    let imageKey = String(indexPath.row)
-                
-            //    if (self.cachePostImages[imageKey] != nil) {
-                    
-            //        timeLineCell.postImageView.image = self.cachePostImages[imageKey]
-                    
-            //    } else {
-                    let postImageURL = status.attachments!.first!.previewURL
-                    NetworkManager.sharedInstance.getImageByURL(imageURL: postImageURL, completion: { (postImage) in
-                        
-                        DispatchQueue.main.async {
-                            timeLineCell.postImageView.image = postImage
-                            
-                            //let imageKey = String(indexPath.row)
-                            
-                       //     self.cachePostImages[imageKey] = postImage
-                        }
-                    })
-                    
-                    
-                    
-              //  }
-                
-                
 
-          //  } else {
-               // timeLineCell.postImageView.image = nil
-        }
-    
-                
-            */
-                
-        
-            
-            
-
-            timeLineCell.selectionStyle = .none
-            
-            
-        
 
         
     }
@@ -159,14 +88,18 @@ timeLineCell.postImageView.image = nil
     
     func configureCell (cell: TimeLineCell, forPath:IndexPath) -> TimeLineCell {
         
+        // Model for cell
+        
         let cellData = self.statuses[forPath.row]
-            //self.textOfPostLabel.adjustsFontSizeToFitWidth = true
+        
+        // Set username & nickname
+        
             cell.userNameLabel.text = "@" + cellData.account.userName
             cell.nickNameLabel.text = cellData.account.nickName
         
         
         
-        // Post text
+        // Set post text
         
             var postText = cellData.textOfPost
             
@@ -175,10 +108,9 @@ timeLineCell.postImageView.image = nil
             postText = removeHtmlTags(inputText: postText)
             cell.textOfPostLabel.text = postText
             
-            
-            
-            // Calculate date
-            
+        
+        // Set & calculate date
+        
             var differenceTime:(minutes:Int, seconds:Int)? = nil
             differenceTime = calculateDateSinceTime(inputDate: cellData.createdAt)
             
@@ -190,56 +122,76 @@ timeLineCell.postImageView.image = nil
             }
         
         
-        // Get post image
+     // Set avatar image
+        
+        let avatarCacheId = "avatar" + String(forPath.row)
+        
+        let cachedAvatar = imageCache.image(withIdentifier: avatarCacheId)
+        
+        if (cachedAvatar != nil) {
+            
+            cell.avatarImageView.image = cachedAvatar
+            print("image set from cache")
+        } else {
+            
+            let avatarURL = cellData.account.avatarURL
+            
+            NetworkManager.sharedInstance.getImageByURL(imageURL: avatarURL, completion: { (avatarImage) in
+
+                DispatchQueue.main.async {
+                    
+                    cell.avatarImageView.image = avatarImage
+                }
+                self.imageCache.add(avatarImage!, withIdentifier: avatarCacheId)
+            })
+        }
+        
+
+        
+     // Get post image
         
         cell.postImageView.image = nil
         
         if (cellData.attachments?.count != 0) {
             
+            let postImageCacheId = "postImage" + String(forPath.row)
             
+            let cachedPostImage = imageCache.image(withIdentifier: postImageCacheId)
             
-            //    let imageKey = String(indexPath.row)
-            
-            //    if (self.cachePostImages[imageKey] != nil) {
-            
-            //        timeLineCell.postImageView.image = self.cachePostImages[imageKey]
-            
-            //    } else {
-            let postImageURL = cellData.attachments!.first!.postImageURL
-            NetworkManager.sharedInstance.getImageByURL(imageURL: postImageURL, completion: { (postImage) in
+            if (cachedPostImage != nil) {
                 
-                DispatchQueue.main.async {
-                    cell.postImageView.image = postImage
+                cell.postImageView.image = cachedPostImage
+            } else {
+                
+                let postImageURL = cellData.attachments!.first!.postImageURL
+                NetworkManager.sharedInstance.getImageByURL(imageURL: postImageURL, completion: { (postImage) in
+   
+                    DispatchQueue.main.async {
+                        
+                        cell.postImageView.image = postImage
+                        
+                        self.reloadCell(forRow:forPath)
+                        
+                    }
+                    self.imageCache.add(postImage!, withIdentifier: postImageCacheId)
                     
-                    //let imageKey = String(indexPath.row)
                     
-                    //     self.cachePostImages[imageKey] = postImage
-                }
-            })
-            
-            
-            
-            //  }
-            
-            
-            
-            //  } else {
-            // timeLineCell.postImageView.image = nil
+                })
+            }
         }
             
-        
+        cell.selectionStyle = .none
         
         return cell
-        
     }
     
-    
-    
-    
-    
-    
-
+    func reloadCell (forRow: IndexPath) {
+        
+        self.tableView.reloadRows(at: [forRow], with: UITableViewRowAnimation.none)
+    }
 }
+
+
 
 
 
