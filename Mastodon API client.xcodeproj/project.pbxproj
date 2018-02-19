@@ -17,6 +17,8 @@
 		831CED10202A70F1006B2DF3 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED0F202A70F1006B2DF3 /* Status.swift */; };
 		831CED14202C45A8006B2DF3 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED13202C45A8006B2DF3 /* TimeLineCell.swift */; };
 		834DFDB6203157B6005D2B8A /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DFDB5203157B6005D2B8A /* Functions.swift */; };
+		8356E846203A2043007B5F70 /* DetailPostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8356E845203A2043007B5F70 /* DetailPostTableVC.swift */; };
+		83EDAC3C203AB51300E194DF /* PopUpNoConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EDAC3B203AB51300E194DF /* PopUpNoConnectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		831CED0F202A70F1006B2DF3 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		831CED13202C45A8006B2DF3 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeLineCell.swift; path = "Mastodon API client/View/Cells/TimeLineCell.swift"; sourceTree = SOURCE_ROOT; };
 		834DFDB5203157B6005D2B8A /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Functions.swift; path = "Mastodon API client/Helpers/Functions.swift"; sourceTree = SOURCE_ROOT; };
+		8356E845203A2043007B5F70 /* DetailPostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableVC.swift; sourceTree = "<group>"; };
+		83EDAC3B203AB51300E194DF /* PopUpNoConnectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNoConnectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				831CED0D202A6B10006B2DF3 /* TimeLineFeedTableVC.swift */,
+				8356E845203A2043007B5F70 /* DetailPostTableVC.swift */,
 				8308A5C9202CD0A20029581E /* NetworkManager.swift */,
 				831CED0A202A62C2006B2DF3 /* JSONResponseParser.swift */,
+				83EDAC3B203AB51300E194DF /* PopUpNoConnectionVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -274,8 +280,10 @@
 				831CED10202A70F1006B2DF3 /* Status.swift in Sources */,
 				831CED0E202A6B10006B2DF3 /* TimeLineFeedTableVC.swift in Sources */,
 				834DFDB6203157B6005D2B8A /* Functions.swift in Sources */,
+				8356E846203A2043007B5F70 /* DetailPostTableVC.swift in Sources */,
 				8308A5CA202CD0A20029581E /* NetworkManager.swift in Sources */,
 				831CED14202C45A8006B2DF3 /* TimeLineCell.swift in Sources */,
+				83EDAC3C203AB51300E194DF /* PopUpNoConnectionVC.swift in Sources */,
 				831CECF6202A6256006B2DF3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

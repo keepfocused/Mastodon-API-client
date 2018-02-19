@@ -13,9 +13,17 @@ import UIKit
 
 class NetworkManager {
     
-    //NetworkManager Singleton
+    // NetworkManager Singleton
     static let sharedInstance = NetworkManager()
     
+    // Check internet connection
+    class func isConnectedToInternet() ->Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
+
+    ///Retrieves time line statuses
+    ///
+    /// - Returns: response from server presented as json.
     
     public func getTimeLineData (completion: @escaping (Data?) -> Void)  {
         
@@ -26,6 +34,12 @@ class NetworkManager {
             completion (json)
         }
     }
+    
+    ///Retrieves image by url
+    ///
+    /// - Parameters:
+    ///   - imageURL: URL for image
+    /// - Returns: image received from server
     
     public func getImageByURL (imageURL:String, completion: @escaping (UIImage?) -> Void) {
         

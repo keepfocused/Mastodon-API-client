@@ -33,20 +33,19 @@ class TimeLineFeedTableVC: UITableViewController {
         
 
         
-        
-        let networkManager = NetworkManager.sharedInstance
-        
-        networkManager.getTimeLineData() { data in
+        if (NetworkManager.isConnectedToInternet()) {
             
-            let parser = JSONResponseParser()
+            let networkManager = NetworkManager.sharedInstance
             
-            self.statuses = parser.performTimeLineDataParse(inputData: data)
-            
-            self.tableView.reloadData()
-            
-            
+            networkManager.getTimeLineData() { data in
+                
+                let parser = JSONResponseParser()
+                
+                self.statuses = parser.performTimeLineDataParse(inputData: data)
+                
+                self.tableView.reloadData()
+            }
         }
-       
         
         
     }
@@ -189,7 +188,18 @@ class TimeLineFeedTableVC: UITableViewController {
         
         self.tableView.reloadRows(at: [forRow], with: UITableViewRowAnimation.none)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! TimeLineCell
+
+        if let destinationViewController = segue.destination as? DetailPostTableVC {
+           // destinationViewController.basicInfo = passAlbumBasicData
+        }
+    }
 }
+
+
+
 
 
 
