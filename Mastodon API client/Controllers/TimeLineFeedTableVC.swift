@@ -15,10 +15,9 @@ class TimeLineFeedTableVC: UITableViewController {
     
     private var statuses = [Status]()
     
-    private let imageCache = AutoPurgingImageCache(
-        memoryCapacity: 100_000_000,
-        preferredMemoryUsageAfterPurge: 60_000_000
-    )
+    let cacheManager = ImageCacheManager.sharedInstance
+    
+
     
     
     
@@ -99,7 +98,7 @@ class TimeLineFeedTableVC: UITableViewController {
     
     // Mark: Private methods
     
-    func configureCell (cell: TimeLineCell, forPath:IndexPath) -> TimeLineCell {
+    func configureCell (cell: TimeLineCell, forPath:IndexPath) {//-> TimeLineCell {
         
         // Model for cell
         
@@ -139,7 +138,7 @@ class TimeLineFeedTableVC: UITableViewController {
         
         let avatarCacheId = "avatar" + String(forPath.row)
         
-        let cachedAvatar = imageCache.image(withIdentifier: avatarCacheId)
+        let cachedAvatar = cacheManager.imageCache.image(withIdentifier: avatarCacheId)
         
         if (cachedAvatar != nil) {
             
@@ -153,7 +152,7 @@ class TimeLineFeedTableVC: UITableViewController {
                 DispatchQueue.main.async {
                     
                     cell.avatarImageView.image = avatarImage
-                    self.imageCache.add(avatarImage!, withIdentifier: avatarCacheId)
+                    self.cacheManager.imageCache.add(avatarImage!, withIdentifier: avatarCacheId)
                 }
                 
             })
@@ -169,7 +168,7 @@ class TimeLineFeedTableVC: UITableViewController {
             
             let postImageCacheId = "postImage" + String(forPath.row)
             
-            let cachedPostImage = imageCache.image(withIdentifier: postImageCacheId)
+            let cachedPostImage = cacheManager.imageCache.image(withIdentifier: postImageCacheId)
             
             if (cachedPostImage != nil) {
                 
@@ -187,7 +186,7 @@ class TimeLineFeedTableVC: UITableViewController {
                             
                             cell.postImageView.image = postImage
                             
-                            self.imageCache.add(postImage!, withIdentifier: postImageCacheId)
+                            self.cacheManager.imageCache.add(postImage!, withIdentifier: postImageCacheId)
                             
                             self.reloadCell(forRow:forPath)
                             
@@ -207,7 +206,7 @@ class TimeLineFeedTableVC: UITableViewController {
         
         cell.selectionStyle = .none
         
-        return cell
+      //  return cell
     }
     
     func reloadCell (forRow: IndexPath) {
@@ -219,15 +218,14 @@ class TimeLineFeedTableVC: UITableViewController {
       
         let cell = sender as! TimeLineCell
         
+        let indexPath = self.tableView!.indexPath(for: cell)
+        let selectedCellNumber = indexPath?.row
+        let passTimeLineStatus = self.statuses[selectedCellNumber!]
+        
+        
         if let destinationViewController = segue.destination as? DetailPostTableVC {
             
-            let passedCell = sender as! TimeLineCell
-            
-            print("cell fetched")
-            
-             destinationViewController.selectedCell = passedCell
-            
-            print("cell set for destination vc")
+
         }
     }
 }

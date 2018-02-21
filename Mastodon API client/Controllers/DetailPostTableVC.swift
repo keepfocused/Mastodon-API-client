@@ -10,25 +10,20 @@ import UIKit
 
 class DetailPostTableVC: UITableViewController {
     
-    public var selectedCell:TimeLineCell? = nil
+    public var selectedPost:Status? = nil
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("entered in view did load")
-        
-        if (selectedCell != nil) {
-            
-            print("selected cell exist")
-        } else {
-            
-            print("selected cell not set")
-        }
+
         
         self.navigationController?.navigationBar.isHidden = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 250
         
         
-      //  self.tableView.reloadData()
+        self.tableView.reloadData()
         
 
     }
@@ -61,15 +56,26 @@ class DetailPostTableVC: UITableViewController {
         
         let detailTimeLineIdentifier = "detailTimeLineCellIdentifier"
         
-        let detailTimeLineCell = tableView.dequeueReusableCell(withIdentifier: detailTimeLineIdentifier, for: indexPath) as! TimeLineCell
+        var detailTimeLineCell = tableView.dequeueReusableCell(withIdentifier: detailTimeLineIdentifier, for: indexPath) as! TimeLineCell
         
-        //detailTimeLineCell = selectedCell
         
-      // configureCell(cell: detailTimeLineCell, forPath: indexPath)
         
-         detailTimeLineCell.nickNameLabel.text = " pizda"
+     
         
         return detailTimeLineCell
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     
@@ -84,6 +90,9 @@ class DetailPostTableVC: UITableViewController {
         cell.userNameLabel.text = passedCell.userNameLabel.text
         
         */
+        //cell = selectedCell
+        
+        /*
         
         if (selectedCell != nil) {
             
@@ -94,9 +103,9 @@ class DetailPostTableVC: UITableViewController {
             
             
         }
+        */
         
-        
-        cell.textOfPostLabel.text = " хуй пизда"
+       // cell.textOfPostLabel.text = " хуй пизда"
         
       
 
@@ -105,53 +114,6 @@ class DetailPostTableVC: UITableViewController {
         
         
     }
- 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
