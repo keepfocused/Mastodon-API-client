@@ -220,10 +220,20 @@ class TimeLineFeedTableVC: UITableViewController {
         
         let indexPath = self.tableView!.indexPath(for: cell)
         let selectedCellNumber = indexPath?.row
-        let passTimeLineStatus = self.statuses[selectedCellNumber!]
+        let passedTimeLineStatus = self.statuses[selectedCellNumber!]
         
         
         if let destinationViewController = segue.destination as? DetailPostTableVC {
+            
+            destinationViewController.selectedPost = passedTimeLineStatus
+            let avatarCacheId = "avatar" + String(selectedCellNumber!)
+            destinationViewController.avatarCacheId = avatarCacheId
+            
+            if (cell.postImageView.image != nil) {
+                
+                let postImageCacheId = "postImage" + String(selectedCellNumber!)
+                destinationViewController.postImageCacheId = postImageCacheId
+            }
             
 
         }
