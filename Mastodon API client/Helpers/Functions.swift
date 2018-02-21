@@ -19,7 +19,6 @@ import Foundation
 
 func calculateDateSinceTime (inputDate: Date?) -> (Int, Int) {
     
-    
     let calendar = Calendar.current
     
     // Current date

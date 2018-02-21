@@ -9,18 +9,32 @@
 import UIKit
 
 class DetailPostTableVC: UITableViewController {
+    
+    public var selectedCell:TimeLineCell? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("entered in view did load")
+        
+        if (selectedCell != nil) {
+            
+            print("selected cell exist")
+        } else {
+            
+            print("selected cell not set")
+        }
+        
         self.navigationController?.navigationBar.isHidden = false
+        
+        
+      //  self.tableView.reloadData()
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+ 
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,15 +53,59 @@ class DetailPostTableVC: UITableViewController {
         return 1
     }
 
-    /*
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        
+        let detailTimeLineIdentifier = "detailTimeLineCellIdentifier"
+        
+        let detailTimeLineCell = tableView.dequeueReusableCell(withIdentifier: detailTimeLineIdentifier, for: indexPath) as! TimeLineCell
+        
+        //detailTimeLineCell = selectedCell
+        
+      // configureCell(cell: detailTimeLineCell, forPath: indexPath)
+        
+         detailTimeLineCell.nickNameLabel.text = " pizda"
+        
+        return detailTimeLineCell
     }
-    */
+    
+    
+    func configureCell (cell: TimeLineCell, forPath:IndexPath) -> TimeLineCell {
+        
+        /*
+         let passedCell = selectedCell!
+        
+        print(passedCell.nickNameLabel.text)
+        print(passedCell.userNameLabel.text)
+        
+        cell.userNameLabel.text = passedCell.userNameLabel.text
+        
+        */
+        
+        if (selectedCell != nil) {
+            
+            
+            cell.nickNameLabel.text = selectedCell!.nickNameLabel.text
+            cell.userNameLabel.text = selectedCell!.userNameLabel.text
+            cell.textOfPostLabel.text = selectedCell!.textOfPostLabel.text
+            
+            
+        }
+        
+        
+        cell.textOfPostLabel.text = " хуй пизда"
+        
+      
+
+        
+        return cell
+        
+        
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -57,6 +115,8 @@ class DetailPostTableVC: UITableViewController {
     }
     */
 
+    
+    
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
