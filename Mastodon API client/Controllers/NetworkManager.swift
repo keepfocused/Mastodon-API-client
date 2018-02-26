@@ -20,7 +20,7 @@ class NetworkManager {
     class func isConnectedToInternet() ->Bool {
         return NetworkReachabilityManager()!.isReachable
     }
-
+    
     ///Retrieves time line statuses
     ///
     /// - Returns: response from server presented as json.

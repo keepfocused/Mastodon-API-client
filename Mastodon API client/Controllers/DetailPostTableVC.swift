@@ -13,12 +13,14 @@ class DetailPostTableVC: UITableViewController {
     public var selectedPost:Status? = nil
     public var avatarCacheId = ""
     public var postImageCacheId = ""
-
-
+    
+    
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         
         self.navigationController?.navigationBar.isHidden = false
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -27,29 +29,25 @@ class DetailPostTableVC: UITableViewController {
         
         self.tableView.reloadData()
         
-
+        
     }
     
- 
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
-
+    
     
     
     
@@ -69,7 +67,7 @@ class DetailPostTableVC: UITableViewController {
         detailTimeLineCell.avatarImageView.image = avatarImage
         
         if (postImageCacheId != "") {
-             let postImage = ImageCacheManager.sharedInstance.imageCache.image(withIdentifier: self.postImageCacheId)
+            let postImage = ImageCacheManager.sharedInstance.imageCache.image(withIdentifier: self.postImageCacheId)
             
             detailTimeLineCell.postImageView.image = postImage
         }
@@ -77,13 +75,13 @@ class DetailPostTableVC: UITableViewController {
         
         
         
-     
+        
         
         return detailTimeLineCell
     }
     
     
-    
+    // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -93,41 +91,15 @@ class DetailPostTableVC: UITableViewController {
     }
     
     
-    func configureCell (cell: TimeLineCell, forPath:IndexPath) -> TimeLineCell {
-        
-        /*
-         let passedCell = selectedCell!
-        
-        print(passedCell.nickNameLabel.text)
-        print(passedCell.userNameLabel.text)
-        
-        cell.userNameLabel.text = passedCell.userNameLabel.text
-        
-        */
-        //cell = selectedCell
-        
-        /*
-        
-        if (selectedCell != nil) {
-            
-            
-            cell.nickNameLabel.text = selectedCell!.nickNameLabel.text
-            cell.userNameLabel.text = selectedCell!.userNameLabel.text
-            cell.textOfPostLabel.text = selectedCell!.textOfPostLabel.text
-            
-            
-        }
-        */
-        
-       // cell.textOfPostLabel.text = " хуй пизда"
-        
-      
-
+    // MARK: - Private methods
+    
+    
+    private func configureCell (cell: TimeLineCell, forPath:IndexPath) -> TimeLineCell {
         
         return cell
         
         
     }
-
-
+    
+    
 }

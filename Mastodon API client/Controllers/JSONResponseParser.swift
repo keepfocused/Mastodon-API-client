@@ -27,7 +27,7 @@ extension JSONDecoder.DateDecodingStrategy {
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "Invalid date: \(string)")
     }
 }
- 
+
 
 
 class JSONResponseParser {

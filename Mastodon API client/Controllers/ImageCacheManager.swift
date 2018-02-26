@@ -17,8 +17,6 @@ class ImageCacheManager {
         memoryCapacity: 100_000_000,
         preferredMemoryUsageAfterPurge: 60_000_000
     )
-    
-    
 }
 
 

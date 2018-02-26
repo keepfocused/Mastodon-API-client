@@ -9,16 +9,15 @@
 import UIKit
 
 class PopUpNoConnectionVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction func popUpDisappearButton(_ sender: Any) {
         
         self.view.removeFromSuperview()
     }
-
 }
-    
+
 

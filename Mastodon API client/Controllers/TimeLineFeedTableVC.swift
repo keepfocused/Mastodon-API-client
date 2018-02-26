@@ -17,9 +17,7 @@ class TimeLineFeedTableVC: UITableViewController {
     
     let cacheManager = ImageCacheManager.sharedInstance
     
-
-    
-    
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,6 @@ class TimeLineFeedTableVC: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 250
-        
         
         
         if (NetworkManager.isConnectedToInternet()) {
@@ -43,8 +40,6 @@ class TimeLineFeedTableVC: UITableViewController {
                 self.statuses = parser.performTimeLineDataParse(inputData: data)
                 
                 self.tableView.reloadData()
-                
-                
             }
         } else {
             
@@ -54,14 +49,12 @@ class TimeLineFeedTableVC: UITableViewController {
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true, completion: nil)
         }
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-
+    
     
     // MARK: - Table view data source
     
@@ -82,12 +75,9 @@ class TimeLineFeedTableVC: UITableViewController {
         configureCell(cell: timeLineCell, forPath: indexPath)
         
         return timeLineCell
-        
-        
-        
     }
     
-    
+    // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -96,9 +86,11 @@ class TimeLineFeedTableVC: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
-    // Mark: Private methods
+    // MARK: Private methods
     
-    func configureCell (cell: TimeLineCell, forPath:IndexPath) {//-> TimeLineCell {
+    private func configureCell (cell: TimeLineCell, forPath:IndexPath) {//-> TimeLineCell {
+        
+        cell.selectionStyle = .none
         
         // Model for cell
         
@@ -109,8 +101,6 @@ class TimeLineFeedTableVC: UITableViewController {
         cell.userNameLabel.text = "@" + cellData.account.userName
         cell.nickNameLabel.text = cellData.account.nickName
         
-        
-        
         // Set post text
         
         var postText = cellData.textOfPost
@@ -120,12 +110,10 @@ class TimeLineFeedTableVC: UITableViewController {
         postText = removeHtmlTags(inputText: postText)
         cell.textOfPostLabel.text = postText
         
-        
         // Set & calculate date
         
         var differenceTime:(minutes:Int, seconds:Int)? = nil
         differenceTime = calculateDateSinceTime(inputDate: cellData.createdAt)
-        
         
         if (differenceTime?.minutes != 0) {
             cell.dateLabel.text = String(describing: differenceTime!.minutes) + "m"
@@ -154,13 +142,10 @@ class TimeLineFeedTableVC: UITableViewController {
                     cell.avatarImageView.image = avatarImage
                     self.cacheManager.imageCache.add(avatarImage!, withIdentifier: avatarCacheId)
                 }
-                
             })
         }
-        
-        
-        
-        // Get post image
+
+        // Set post image
         
         cell.postImageView.image = nil
         
@@ -178,44 +163,28 @@ class TimeLineFeedTableVC: UITableViewController {
                 let postImageURL = cellData.attachments!.first!.postImageURL
                 NetworkManager.sharedInstance.getImageByURL(imageURL: postImageURL, completion: { (postImage) in
                     
-                    
                     if postImage != nil {
-                        
                         
                         DispatchQueue.main.async {
                             
                             cell.postImageView.image = postImage
-                            
                             self.cacheManager.imageCache.add(postImage!, withIdentifier: postImageCacheId)
-                            
                             self.reloadCell(forRow:forPath)
-                            
                         }
-                        
-                        
-                        
                     }
-                    
-
-                    
-                    
-                    
                 })
             }
         }
-        
-        cell.selectionStyle = .none
-        
-      //  return cell
     }
     
-    func reloadCell (forRow: IndexPath) {
-        
+    private func reloadCell (forRow: IndexPath) {
         self.tableView.reloadRows(at: [forRow], with: UITableViewRowAnimation.none)
     }
     
+    // MARK: - Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      
+        
         let cell = sender as! TimeLineCell
         
         let indexPath = self.tableView!.indexPath(for: cell)
@@ -234,8 +203,6 @@ class TimeLineFeedTableVC: UITableViewController {
                 let postImageCacheId = "postImage" + String(selectedCellNumber!)
                 destinationViewController.postImageCacheId = postImageCacheId
             }
-            
-
         }
     }
 }
