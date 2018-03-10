@@ -17,7 +17,7 @@
 		831CED0E202A6B10006B2DF3 /* TimeLineFeedTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED0D202A6B10006B2DF3 /* TimeLineFeedTableVC.swift */; };
 		831CED10202A70F1006B2DF3 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED0F202A70F1006B2DF3 /* Status.swift */; };
 		831CED14202C45A8006B2DF3 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CED13202C45A8006B2DF3 /* TimeLineCell.swift */; };
-		834DFDB6203157B6005D2B8A /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DFDB5203157B6005D2B8A /* Functions.swift */; };
+		834DFDB6203157B6005D2B8A /* UtilityMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DFDB5203157B6005D2B8A /* UtilityMethods.swift */; };
 		8356E846203A2043007B5F70 /* DetailPostTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8356E845203A2043007B5F70 /* DetailPostTableVC.swift */; };
 		83EDAC3C203AB51300E194DF /* PopUpNoConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EDAC3B203AB51300E194DF /* PopUpNoConnectionVC.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +37,7 @@
 		831CED0D202A6B10006B2DF3 /* TimeLineFeedTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeLineFeedTableVC.swift; path = "Mastodon API client/Controllers/TimeLineFeedTableVC.swift"; sourceTree = SOURCE_ROOT; };
 		831CED0F202A70F1006B2DF3 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		831CED13202C45A8006B2DF3 /* TimeLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeLineCell.swift; path = "Mastodon API client/View/Cells/TimeLineCell.swift"; sourceTree = SOURCE_ROOT; };
-		834DFDB5203157B6005D2B8A /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Functions.swift; path = "Mastodon API client/Helpers/Functions.swift"; sourceTree = SOURCE_ROOT; };
+		834DFDB5203157B6005D2B8A /* UtilityMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UtilityMethods.swift; path = "Mastodon API client/Helpers/UtilityMethods.swift"; sourceTree = SOURCE_ROOT; };
 		8356E845203A2043007B5F70 /* DetailPostTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostTableVC.swift; sourceTree = "<group>"; };
 		83EDAC3B203AB51300E194DF /* PopUpNoConnectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpNoConnectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,7 +116,7 @@
 		831CED0C202A63C1006B2DF3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				834DFDB5203157B6005D2B8A /* Functions.swift */,
+				834DFDB5203157B6005D2B8A /* UtilityMethods.swift */,
 				831CECF5202A6256006B2DF3 /* AppDelegate.swift */,
 				831CECFC202A6256006B2DF3 /* Assets.xcassets */,
 				831CED01202A6256006B2DF3 /* Info.plist */,
@@ -283,7 +283,7 @@
 				831CED10202A70F1006B2DF3 /* Status.swift in Sources */,
 				8306520C203DF402001592E5 /* ImageCacheManager.swift in Sources */,
 				831CED0E202A6B10006B2DF3 /* TimeLineFeedTableVC.swift in Sources */,
-				834DFDB6203157B6005D2B8A /* Functions.swift in Sources */,
+				834DFDB6203157B6005D2B8A /* UtilityMethods.swift in Sources */,
 				8356E846203A2043007B5F70 /* DetailPostTableVC.swift in Sources */,
 				8308A5CA202CD0A20029581E /* NetworkManager.swift in Sources */,
 				831CED14202C45A8006B2DF3 /* TimeLineCell.swift in Sources */,
